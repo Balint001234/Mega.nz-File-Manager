@@ -20,7 +20,7 @@ To build a release version:
 dotnet build -c Release
 
 # Important!
-The accounts.json and encryption.key file (that saves the accounts) is located in:
+The accounts.json and encryption.key file (that saves the accounts) location
 linux : ~/.config/MegaDesktopClient
 windows : C:\Users\Your user\AppData\Roaming\MegaDesktopClient
 DO NOT SHARE THIS 2 FILES!!!!!!!!!!!
