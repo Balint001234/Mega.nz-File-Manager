@@ -13,7 +13,7 @@ This is a simple C# application that allows you to log into your Mega.nz account
 4. Run the application:
    dotnet run
 
-#Build (optional)
+# Build (optional)
 
 To build a release version:
 
