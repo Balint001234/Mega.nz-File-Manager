@@ -18,3 +18,9 @@ This is a simple C# application that allows you to log into your Mega.nz account
 To build a release version:
 
 dotnet build -c Release
+
+# Important!
+The accounts.json and encryption.key file (that saves the accounts) is located in:
+linux : ~/.config/MegaDesktopClient
+windows : C:\Users\Your user\AppData\Roaming\MegaDesktopClient
+DO NOT SHARE THIS 2 FILES!!!!!!!!!!!
