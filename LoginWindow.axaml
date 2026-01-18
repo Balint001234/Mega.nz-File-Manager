@@ -1,0 +1,152 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FileShare"
+        x:Class="FileShare.LoginWindow"
+        Title="MEGA Login"
+        Width="500"
+        Height="540"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E1E">
+    
+  <Border CornerRadius="10" Background="#252526" Margin="20">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*,Auto" 
+          Margin="25"
+          VerticalAlignment="Center">
+      
+      <StackPanel Grid.Row="0" 
+                  HorizontalAlignment="Center" 
+                  Margin="0,0,0,20">
+        <TextBlock Text="🔐" 
+                   FontSize="40" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,5"/>
+        <TextBlock Text="MEGA Desktop Client" 
+                   FontSize="22"
+                   Foreground="White"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="Sign in to your MEGA account"
+                   FontSize="14"
+                   Foreground="#A0A0A0"
+                   HorizontalAlignment="Center"
+                   Margin="0,5,0,0"/>
+      </StackPanel>
+      
+      <Border Grid.Row="1" 
+              CornerRadius="8" 
+              Background="#2D2D30" 
+              Margin="0,0,0,10"
+              Padding="1">
+        <TextBox x:Name="EmailTextBox"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Padding="15,12"
+                 Foreground="White"
+                 Watermark="Email address"
+                 FontSize="14"/>
+      </Border>
+      
+      <Border Grid.Row="2" 
+              CornerRadius="8" 
+              Background="#2D2D30" 
+              Margin="0,0,0,15"
+              Padding="1">
+        <TextBox x:Name="PasswordTextBox"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Padding="15,12"
+                 Foreground="White"
+                 Watermark="Password"
+                 PasswordChar="•"
+                 FontSize="14"/>
+      </Border>
+      
+      <CheckBox x:Name="SaveAccountCheckBox"
+                Grid.Row="3"
+                Content="Save this account"
+                Foreground="#A0A0A0"
+                IsChecked="True"
+                Margin="0,0,0,10"/>
+      
+      <Border Grid.Row="4" 
+              CornerRadius="8" 
+              Background="#2D2D30" 
+              Margin="0,0,0,15"
+              MaxHeight="150">
+        <StackPanel>
+          <TextBlock Text="📁 Saved Accounts" 
+                     Foreground="#A0A0A0" 
+                     Margin="10,10,10,5"
+                     FontSize="12"/>
+          
+          <ListBox x:Name="SavedAccountsListBox"
+                   Background="Transparent"
+                   BorderThickness="0"
+                   MaxHeight="100"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   SelectionChanged="SavedAccountsListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="local:SavedAccount">
+                <Border Background="Transparent" Padding="8,5" Margin="2">
+                  <Border.Styles>
+                    <Style Selector="Border:pointerover">
+                      <Setter Property="Background" Value="#3e3e40"/>
+                    </Style>
+                  </Border.Styles>
+                  
+                  <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock Text="👤" 
+                               VerticalAlignment="Center"
+                               FontSize="16"/>
+                    <StackPanel>
+                      <TextBlock Text="{Binding Email}" 
+                                 Foreground="White" 
+                                 FontSize="13"/>
+                      <TextBlock Text="{Binding AccountName}" 
+                                 Foreground="#A0A0A0" 
+                                 FontSize="11"/>
+                    </StackPanel>
+                  </StackPanel>
+                </Border>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          
+          <TextBlock Text="Click on a saved account to use it" 
+                     Foreground="#808080" 
+                     Margin="10,5,10,5"
+                     FontSize="11"/>
+        </StackPanel>
+      </Border>
+      
+      <Button x:Name="LoginButton"
+              Grid.Row="5"
+              Content="Sign In"
+              HorizontalAlignment="Stretch"
+              Height="45"
+              Background="#D12127"
+              Foreground="White"
+              FontSize="16"
+              FontWeight="Bold"
+              CornerRadius="8"
+              VerticalContentAlignment="Center"
+              Click="LoginButton_Click">
+        <Button.Styles>
+          <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#E52D33"/>
+          </Style>
+        </Button.Styles>
+      </Button>
+      
+      <ProgressBar x:Name="LoginProgressBar"
+                   Grid.Row="6"
+                   Height="45"
+                   IsVisible="False"
+                   Minimum="0"
+                   Maximum="100"
+                   ShowProgressText="True"
+                   Foreground="#D12127"
+                   Background="#2D2D30"
+                   CornerRadius="8"/>
+    </Grid>
+  </Border>
+</Window>
